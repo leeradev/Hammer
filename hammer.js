@@ -438,7 +438,7 @@ client.on('guildCreate', (guild) => {
  join.push("After you carry those things out, please run `hlogcheck` and `hpermcheck` to totally make sure that everything is set up.")
  join.push("If you need anything at all, please join my server @ **http://discord.io/hammer**, and someone there can help you.")
  join.push("As always, thank **YOU** for using Hammer.")
- guild.defaultChannel.sendMessage(join)
+ guild.defaultChannel.sendMessage(join.join("\n"))
 
 });
 client.on('guildDelete', (guild) => {
