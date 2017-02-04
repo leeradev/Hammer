@@ -56,7 +56,7 @@ module.exports = class Info {
                             myselfE()
                           } else {
                             if(messages2.first().mentions.users.first()) {
-                              let member = message.guild.member(message2.first().mentions.users.first())
+                              let member = message.guild.member(messages2.first().mentions.users.first())
                               memberE(member);
                             }
                           }
