@@ -18,7 +18,7 @@
   "author": "Jack",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "github:hydrabolt/discord.js#indev",
+    "discord.js": "github:hydrabolt/discord.js#master",
     "little-time": "^1.1.7",
     "node-notifier": "^4.6.1",
     "require-reload": "^0.2.2"
