@@ -57,7 +57,7 @@ module.exports = class Info {
                           } else {
                             if(messages.first().mentions.users.first()) {
                               let member = message.mentions.users.first()
-
+                              memberE();
                             }
                           }
                         })
