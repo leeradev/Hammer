@@ -27,7 +27,7 @@ module.exports = class Info {
             message.channel.sendEmbed(embed)
           }
 
-          function memberE() {
+          function memberE(member) {
             const embed = new Discord.RichEmbed();
             embed.setAuthor(`${member.username}`, `${member.avatarURL}`)
             embed.setColor(0x176790)
@@ -57,7 +57,7 @@ module.exports = class Info {
                           } else {
                             if(messages.first().mentions.users.first()) {
                               let member = message.mentions.users.first()
-                              memberE();
+                              memberE(member);
                             }
                           }
                         })
