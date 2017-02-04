@@ -32,17 +32,10 @@ module.exports = class Info {
                       if(messages.first().content == 'cancel') {
                         message.channel.sendMessage(":ok_hand:")
                       }
-                      if(messages.first().content == 'user') {
-                        message.channel.sendMessage("Please mention the user.")
-                        message.channel.awaitMessages(m => m.author.id == message.author.id, {
-                            max: 1,
-                            time: 30000
-                        }).then(message => {
-                          if(message.first().mentions.users.first()) {
-                            message.channel.sendMessage("Soon:tm:")
-                          }
-
-                        })
+                      if(messages.first().content == 'user' && !messages.first().mentions.users.first()) {
+                        message.channel.sendMessage(`User info for ${message.author.username}.`);
+                      } else {
+                        message.channel.sendMessage(`User info for ${messages.first().mentions.users.first().username}.`);
                       }
                     })
                   } else {
