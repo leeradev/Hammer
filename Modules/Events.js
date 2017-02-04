@@ -32,11 +32,11 @@ module.exports = class Events {
 
         guildCreate(guild) {
           if(!this.client.channels.get('250072021143257088')) return;
-          this.client.logger.sendMessage(`**Joined** ${guild.name} with **${guild.memberCount}** members. I am now in ${this.client.guilds.size}`);
+          this.client.logger.sendMessage(`Joined **${guild.name}** (\`${guild.id}\`) with **${guild.memberCount}** members. I am now in **${this.client.guilds.size}** guilds.`);
         }
 
         guildDelete(guild) {
           if(!this.client.channels.get('250072021143257088')) return;
-          this.client.logger.sendMessage(`**Joined** ${guild.name} with **${guild.memberCount}** members. I am now in ${this.client.guilds.size}`);
+          this.client.logger.sendMessage(`Left **${guild.name}** (\`${guild.id}\`) with **${guild.memberCount}** members. I am now in **${this.client.guilds.size}** guilds.`);
         }
       }
