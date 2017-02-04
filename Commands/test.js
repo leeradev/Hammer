@@ -7,6 +7,6 @@ module.exports = class Test {
   }
 
   async run(message, args) {
-    messsage.channel.sendMessage(dadsads)
+    messsage.channel.sendMessage(``)
 }
 }
