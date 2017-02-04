@@ -51,12 +51,12 @@ module.exports = class Info {
                         message.channel.awaitMessages(m => m.author.id == message.author.id, {
                             max: 1,
                             time: 30000
-                        }).then(messages => {
-                          if(messages.first().content == 'myself') {
+                        }).then(messages2 => {
+                          if(messages2.first().content == 'myself') {
                             myselfE()
                           } else {
-                            if(messages.first().mentions.users.first()) {
-                              let member = message.guild.member(message.mentions.users.first())
+                            if(messages2.first().mentions.users.first()) {
+                              let member = message.guild.member(message2.first().mentions.users.first())
                               memberE(member);
                             }
                           }
