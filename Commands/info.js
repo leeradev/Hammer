@@ -19,6 +19,20 @@ module.exports = class Info {
               embed.setFooter(`Generated at ${new Date().toUTCString()}`)
               message.channel.sendEmbed(embed)
           }
+
+          function myselfE() {
+            const embed = new Discord.RichEmbed();
+            embed.setAuthor(`${message.author.username}`, `${message.author.avatarURL}`)
+            embed.setColor(0x176790)
+            message.channel.sendEmbed(embed)
+          }
+
+          function memberE() {
+            const embed = new Discord.RichEmbed();
+            embed.setAuthor(`${member.username}`, `${member.avatarURL}`)
+            embed.setColor(0x176790)
+            message.channel.sendEmbed(embed)
+          }
             const client = this.client;
             if (!args) {
                 message.channel.sendMessage("You didn't include an argument. Would you like information on `server` or `user`? You can also `cancel` the operation.")
@@ -33,13 +47,25 @@ module.exports = class Info {
                         message.channel.sendMessage(":ok_hand:")
                       }
                       if(messages.first().content == 'user' && !messages.first().mentions.users.first()) {
-                        message.channel.sendMessage(`User info for ${message.author.username}.`);
-                      } else {
-                        message.channel.sendMessage(`User info for ${messages.first().mentions.users.first().username}.`);
-                      }
+                        message.channel.sendMessage("Would you like information for `myself` or another user? If so, please mention the user.");
+                        message.channel.awaitMessages(m => m.author.id == message.author.id, {
+                            max: 1,
+                            time: 30000
+                        }).then(messages => {
+                          if(messages.first().content == 'myself') {
+                            myselfE()
+                          } else {
+                            if(messages.first().mentions.users.first()) {
+                              let member = message.mentions.users.first()
+
+                            }
+                          }
+                        })
+                        }
+
                     })
                   } else {
                     if(args.includes('server')) return serverE()
                   }
                 }
-              }
+              } //messages.first().mentions.users.first().username
