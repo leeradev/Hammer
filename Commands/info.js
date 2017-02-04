@@ -32,6 +32,18 @@ module.exports = class Info {
                       if(messages.first().content == 'cancel') {
                         message.channel.sendMessage(":ok_hand:")
                       }
+                      if(messages.first().content == 'user') {
+                        message.channel.sendMessage("Please mention the user.")
+                        message.channel.awaitMessages(m => m.author.id == message.author.id, {
+                            max: 1,
+                            time: 30000
+                        }).then(message => {
+                          if(message.first().mentions.users.first()) {
+                            message.channel.sendMessage("Soon:tm:")
+                          }
+
+                        })
+                      }
                     })
                   } else {
                     if(args.includes('server')) return serverE()
