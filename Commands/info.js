@@ -67,5 +67,26 @@ module.exports = class Info {
                   } else {
                     if(args.includes('server')) return serverE()
                   }
+
+                    if(args.includes('user')) {
+                      if(!message.guild.member(message.mentions.users.first())) {
+                        message.channel.sendMessage("You didn't include a `user`. Please mention one now.")
+                        message.channel.awaitMessages(m => m.author.id == message.author.id, {
+                            max: 1,
+                            time: 30000
+                        }).then(messages2 => {
+                          if(messages2.first().mentions.users.first()) {
+                            let member = message.guild.member(messages2.first().mentions.users.first())
+                            memberE(member);
+                          }
+                        })
+                      } else {
+                        let member = message.guild.member(message.mentions.users.first())
+                        memberE(member);
+                      }
+
+
+                    }
+
                 }
               } //messages.first().mentions.users.first().username
