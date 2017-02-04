@@ -6,6 +6,8 @@ const client = new class Client extends Discord.Client {
     super({ fetchAllMembers: true });
     this.events = new events(this);
     this.commands = new Map();
+    
+    this.logger = new Discord.WebhookClient('277540915504087040', '0rtOAJT7wklRQMP66jgEnCqXYUEjgjAmofzZyNUPbUpl17yM51o_zjAv2cNHA_3bYB-t');
 
 
     // Event Handling
