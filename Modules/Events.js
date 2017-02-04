@@ -27,6 +27,7 @@ module.exports = class Events {
                     await new(this.client.commands.get(command))(this.client).run(message, args);
                 } catch (e) {
                     console.error(e);
+                    error(error);
                 }
             }
         }
@@ -43,6 +44,7 @@ module.exports = class Events {
     }
 
     error(error) {
+      console.log("An error has occured.")
         paste.login(config.pastebin.u, config.pastebin.p, function(success, data) {
             if (!success) {
                 console.log("Failed (" + data + ")");
