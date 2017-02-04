@@ -29,7 +29,7 @@ module.exports = class Info {
 
           function memberE(member) {
             const embed = new Discord.RichEmbed();
-            embed.setAuthor(`${member.username}`, `${member.avatarURL}`)
+            embed.setAuthor(`${member.user.username}`, `${member.user.avatarURL}`)
             embed.setColor(0x176790)
             message.channel.sendEmbed(embed)
           }
