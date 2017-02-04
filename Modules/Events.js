@@ -31,20 +31,12 @@ module.exports = class Events {
         }
 
         guildCreate(guild) {
-          this.client.channels.get("250072021143257088").sendEmbed({
-            author: {name: `${guild.name}`, icon_url: `${guild.iconURL}`},
-            description: `__**New Guild**__\n\n**Name**: ${guild.name}\n**Owner**: ${guild.owner.user.username}#${guild.owner.user.discriminator}\n**User Count**: ${guild.memberCount} members\n**Current Guild Count**: ${this.client.guilds.size}`,
-            color: 0x00FF00,
-            footer: {text: `Joined at ${guild.joinedAt.toUTCString()}`}
-          })
+          if(!this.client.channels.get('250072021143257088')) return;
+          this.client.logger.sendMessage(`**Joined** ${guild.name} with **${guild.memberCount}** members.`);
         }
 
         guildDelete(guild) {
-          this.client.channels.get("250072021143257088").sendEmbed({
-            author: {name: `${guild.name}`, icon_url: `${guild.iconURL}`},
-            description: `__**Left Guild**__\n\n**Name**: ${guild.name}\n**Owner**: ${guild.owner.user.username}#${guild.owner.user.discriminator}\n**User Count**: ${guild.memberCount} members\n**Current Guild Count**: ${this.client.guilds.size}`,
-            color: 0x8B0000,
-            footer: {text: `Left at ${guild.joinedAt.toUTCString()}`}
-          })
+          if(!this.client.channels.get('250072021143257088')) return;
+          this.client.logger.sendMessage(`**Joined** ${guild.name} with **${guild.memberCount}** members.`);
         }
       }
