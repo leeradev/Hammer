@@ -13,13 +13,18 @@ module.exports = class Shard {
     let res  = this.client.shard.broadcastEval('this.guilds.size').then(res => {
       res.map(i => i).forEach((value, index) => {
         if(index == this.client.shard.id) {
-          final.push(`${this.client.pad(`Shard ${index}*`, 9)} :: ${value} Guilds`);
+          final.push(`${this.pad(`Shard ${index}*`, 9)} :: ${value} Guilds`);
         } else {
-          final.push(`${this.client.pad(`Shard ${index}`, 9)} :: ${value} Guilds`);
+          final.push(`${this.pad(`Shard ${index}`, 9)} :: ${value} Guilds`);
         }
       })
       final.push(`\n\`\`\``);
       message.channel.sendMessage(final.join('\n'));
     });
+  }
+
+
+  pad(str, l) {
+      return str + ' '.repeat(l - str.length + 1);
   }
 }
