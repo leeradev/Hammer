@@ -15,8 +15,8 @@ module.exports = class Events {
             const mod = new(require(`../Commands/${commands[command]}`))(this.client);
             this.client.commands.set(mod.name, require(`../Commands/${commands[command]}`))
         }
-        paste.setDevKey(config.pastebin.token)
-      
+
+
     }
 
     async message(message) {
@@ -55,22 +55,5 @@ module.exports = class Events {
         this.client.logger.sendMessage(`Left **${guild.name}** (\`${guild.id}\`) with **${guild.memberCount}** members. I am now in **${this.client.guilds.size}** guilds.`);
     }
 
-    error(error) {
-        console.log("An error has occured.")
-        paste.login(config.pastebin.u, config.pastebin.p, function(success, data) {
-            if (!success) {
-                console.log("Failed (" + data + ")");
-                return false;
-            }
-            paste.create({
-                contents: error,
-                name: `Hammer: Error on ${new Date().toUTCString()}`,
-                privacy: "1"
-            }, function(success, data) {
-                if (success) {
-                    this.client.logger.sendMessage(`**Error**. ${data}`)
-                }
-            })
-        })
-    }
+
 }
