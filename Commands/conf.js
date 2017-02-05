@@ -12,9 +12,8 @@ module.exports = class Info {
           if(args === "inspect") {
             this.client.sql.open('./hammer.sqlite').then(() => {
               this.client.sql.get(`SELECT * FROM servers WHERE serverID ='${message.guild.id}'`).then(row => {
-                //if(!row) return;
-                console.log(row)
-
+                if(!row) return;
+                message.reply(row);
             })
           })
         }
