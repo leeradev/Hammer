@@ -12,7 +12,7 @@ module.exports = class Info {
           if(args === "inspect") {
             this.client.sql.open('./hammer.sqlite').then(() => {
               this.client.sql.get(`SELECT * FROM servers WHERE serverID ='${message.guild.id}'`).then(row => {
-                if(!row) return;
+                if(!row) return message.reply('No data found for this server.');
                 message.reply(row);
             })
           })
