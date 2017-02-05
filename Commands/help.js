@@ -6,12 +6,16 @@ module.exports = class Ping {
     this.args = "";
   }
 
+  pad(str, l) {
+      return str + ' '.repeat(l - str.length + 1);
+  }
+
   async run(message, args) {
     let final = "";
     this.client.commands.forEach(value => {
-      final += `\n__**${new value().name} ${new value().args}**__\n\t${new value().info}`
+      final += `${this.pad(new value().name, 10)} :: ${new value().info}\n`
     })
 
-    message.channel.sendMessage(`__**Hammer Commands**__\n${final}`);
+    message.channel.sendCode(`asciidoc`, `= Hammer Commands =\n${final}`);
   }
 }
