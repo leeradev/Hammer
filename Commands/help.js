@@ -1,4 +1,4 @@
-module.exports = class Ping {
+module.exports = class help {
   constructor(client) {
     this.client = client;
     this.name = "help";
