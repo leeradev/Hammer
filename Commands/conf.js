@@ -17,13 +17,13 @@ module.exports = class Info {
                 message.channel.sendEmbed({
                   author: {name: message.guild.name, icon_url: message.guild.iconURL},
                   fields: [
-                    {'Server ID' row.serverID},
-                    {'Access Role' row.accessRole},
-                    {'\u200b', '\u200b', true},
-                    {'Logging Channel', row.loggingCh},
-                    {'Anti-Invites', row.antiAdv},
-                    {'\u200b', '\u200b', true}
-                  ]
+                    {name: 'Server ID', value: row.serverID},
+                    {name: 'Access Role', value: row.accessRole},
+                    {name:'\u200b', value: '\u200b', inline: true},
+                    {name: 'Logging Channel', value: row.loggingCh},
+                    {name: 'Anti-Invites', value: row.antiAdv},
+                    {name: '\u200b', value: '\u200b', inline: true}
+                  ],
                   color: 0x176790
                 })
             })
