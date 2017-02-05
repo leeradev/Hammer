@@ -33,7 +33,7 @@ module.exports = class Events {
                     await new(this.client.commands.get(command))(this.client).run(message, args);
                 } catch (e) {
                     console.error(e);
-                    error(error);
+                  
                 }
             }
         }
