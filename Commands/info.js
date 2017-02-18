@@ -20,19 +20,25 @@ module.exports = class Info {
               message.channel.sendEmbed(embed)
           }
 
-          function myselfE() {
-            const embed = new Discord.RichEmbed();
-            embed.setAuthor(`${message.author.username}`, `${message.author.avatarURL}`)
-            embed.setColor(0x176790)
-            message.channel.sendEmbed(embed)
-          }
 
           function memberE(member) {
             const embed = new Discord.RichEmbed();
-            embed.setAuthor(`${member.user.username}`, `${member.user.avatarURL}`)
+            embed.setAuthor(`${member.user.username}`, `${member.user.avatarURL}`, `https://github.com/jaacks/selfcord`)
+            embed.setDescription(`__**Information on ${member.user.username}**__\n\n**Discriminator**: ${member.user.discriminator}\n**Presence**: ${member.user.presence.status}\n**Playing**: ${member.user.presence.game ? member.user.presence.game.name : "None."}\n**Joined Guild**: ${member.joinedAt.toUTCString()}\n**Account Creation**: ${member.user.createdAt.toUTCString()}`)
             embed.setColor(0x176790)
+            embed.setFooter(`Generated at ${new Date().toUTCString()}`)
             message.channel.sendEmbed(embed)
           }
+
+          function myselfE(member) {
+            const embed = new Discord.RichEmbed();
+            embed.setAuthor(`${message.author.username}`, `${message.author.avatarURL}`, `https://github.com/jaacks/selfcord`)
+            embed.setDescription(`__**Information on ${message.author.username}**__\n\n**Discriminator**: ${message.author.discriminator}\n**Presence**: ${message.author.presence.status}\n**Playing**: ${message.author.presence.game ? message.author.presence.game.name : "None."}\n**Joined Guild**: ${message.guild.members.get(message.author.id).joinedAt}\n**Account Creation**: ${message.author.createdAt}`)
+            embed.setColor(0x176790)
+            embed.setFooter(`Generated at ${new Date().toUTCString()}`)
+            message.channel.sendEmbed(embed)
+          }
+
             const client = this.client;
             if (!args) {
                 message.channel.sendMessage("You didn't include an argument. Would you like information on `server` or `user`? You can also `cancel` the operation.")
@@ -67,8 +73,11 @@ module.exports = class Info {
                   } else {
                     if(args.includes('server')) return serverE()
                   }
+                  if(args.split(" ")[0] == 'user' && args.split(" ")[1] == 'myself') {
+                    myselfE()
+                  }
 
-                    if(args.includes('user')) {
+                    if(args.split(" ")[0] == 'user' && args.split(" ")[1] !== 'myself') {
                       if(!message.guild.member(message.mentions.users.first())) {
                         message.channel.sendMessage("You didn't include a `user`. Would you like information on `myself` or another user? If so, please mention someone now.")
                         message.channel.awaitMessages(m => m.author.id == message.author.id, {
@@ -90,6 +99,7 @@ module.exports = class Info {
                         memberE(member);
                       }
                     }
+
 
                 }
               } //messages.first().mentions.users.first().username
