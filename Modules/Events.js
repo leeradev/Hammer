@@ -20,6 +20,7 @@ module.exports = class Events {
   async message(message) {
     let data = await this.client.data.load();
     if (message.content.startsWith(config.prefix)) {
+      if(data.blacklists[message.author.id]) return message.channel.sendMessage(`:warning: **Uh oh, that's not good.**\nLooks like your in Hammers blacklist. You cannot run any commands.`);
       let command = message.content.substr(config.prefix.length).split(" ")[0];
       let args = message.content.substr(config.prefix.length + command.length + 1)
       if (this.client.commands.get(command)) {
@@ -37,6 +38,6 @@ module.exports = class Events {
   }
 
   guildDelete(guild) {
-    
+
   }
 }
