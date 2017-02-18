@@ -18,8 +18,7 @@ module.exports = class Ga {
             }).then(collected => {
                 for (var g in this.client.guilds.array()) {
                     this.client.guilds.array()[g].defaultChannel.sendEmbed({
-                      title: `:globe_with_meridians: Global Annoucement`,
-                      author: {name: `${message.author.username}#${message.author.discriminator}`, icon_url: `${message.author.avatarURL.replace('.jpg', '.png')}`},
+                      author: {name: `Announcement from ${message.author.username}#${message.author.discriminator}`, icon_url: `${message.author.avatarURL.replace('.jpg', '.png')}`},
                       description: `${args}`,
                       color: 0x176790,
                       url: `https://teammoonlight.github.io/hammer`
