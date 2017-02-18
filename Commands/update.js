@@ -11,9 +11,11 @@ module.exports = class Update {
 
     require('child_process').exec(`git pull origin master`, (err, out, er) => {
       if(err) return message.channel.sendCode(``, err);
-      await message.channel.sendCode('', `${out}\n${er}`);
-      await message.channel.sendMessage(`**Rebooting...**`);
-      await this.client.shard.broadcastEval(`this.logout()`);
+      message.channel.sendCode('', `${out}\n${er}`).then(() => {
+        message.channel.sendMessage(`**Rebooting...**`).then(() => {
+          this.client.shard.broadcastEval(`this.logout()`);
+        })
+      })
     })
   }
 }
