@@ -12,6 +12,7 @@ const client = new class Client extends Discord.Client {
     this.data     = new data(this);
     this.commands = new Map();
     this.sql      = require('sqlite');
+    this.webhook  = new Discord.WebhookClient("282604545232732160", "HQyYi8J8mYRLXYxtSlLaTe4PAMsb8V1N24Etqq5fnvr4jRhk11SFwRc62k4qnE8E8u6M")
 
 
     this.logger = new Discord.WebhookClient('277540915504087040', '0rtOAJT7wklRQMP66jgEnCqXYUEjgjAmofzZyNUPbUpl17yM51o_zjAv2cNHA_3bYB-t');
