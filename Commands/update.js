@@ -13,7 +13,7 @@ module.exports = class Update {
       if(err) return message.channel.sendCode(``, err);
       message.channel.sendCode('', `${out}\n${er}`).then(() => {
         message.channel.sendMessage(`**Rebooting...**`).then(() => {
-          this.client.shard.broadcastEval(`this.destroy()`);
+          process.exit(1);
         })
       })
     })
