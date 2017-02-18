@@ -34,10 +34,10 @@ module.exports = class Events {
     }
 
     guildCreate(guild) {
-        this.client.webhook.sendMessage(`:inbox_tray: **Shard ${this.client.shard.id}** Joined **${guild.name}**.\n**${guild.memberCount}** Members`)
+        this.client.webhook.sendMessage(`:inbox_tray: __**Shard ${this.client.shard.id}**__\nJoined **${guild.name}**.\n**${guild.memberCount}** Members`)
     }
 
     guildDelete(guild) {
-        this.client.webhook.sendMessage(`:outbox_tray: **Shard ${this.client.shard.id}** Left **${guild.name}**.\n**${guild.memberCount}** Members`)
+        this.client.webhook.sendMessage(`:outbox_tray: __**Shard ${this.client.shard.id}**__\nLeft **${guild.name}**.\n**${guild.memberCount}** Members`)
     }
 }
