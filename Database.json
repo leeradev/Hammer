@@ -1,7 +1,5 @@
 {
-  "settings": {
-    "modlogs": {
-      
-    }
-  }
+	"settings": {
+		"modlogs": {}
+	}
 }

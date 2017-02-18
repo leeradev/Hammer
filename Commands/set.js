@@ -16,6 +16,7 @@ module.exports = class Ping {
 
     if(args.split(" ")[0] == 'disable' && args.split(" ")[1] == 'modlogs') {
       let data = await this.client.data.load();
+      if(!data.settings.modlogs[message.guild.id]) return message.channel.sendMessage(`:x: **Modlogs** already disabled in <#${message.channel.id}>.`)
       delete data.settings.modlogs[message.guild.id];
       await this.client.data.save(data);
       message.channel.sendMessage(`:ok_hand: Successfully disabled **modlogs** in <#${message.channel.id}>.`);
