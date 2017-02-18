@@ -8,8 +8,9 @@ module.exports = class Ga {
 
     async run(message, args) {
         var a = new Date();
+        //var arg = message.content.split(" ").slice(1).join(' ')
         if (message.author.id === "153244623219851266" || message.author.id === "116293018742554625") {
-            message.channel.sendMessage(`:warning: | Are you sure you want to send message ${args} as a **GLOBAL ANNOUCEMENT** to **${this.client.guilds.size} servers**?\n***THIS MEANS NO BOT ANNOUCEMENTS JACK***`)
+            message.channel.sendMessage(`:warning: **Woah woah woah there bud.** Do you really want to send \`${args}\` to **${this.client.guilds.size}** servers?`)
             var filter = message => message.content.toUpperCase() === "YES"
             message.channel.awaitMessages(filter, {
                 max: 1,
@@ -18,10 +19,11 @@ module.exports = class Ga {
             }).then(collected => {
                 for (var g in this.client.guilds.array()) {
                     this.client.guilds.array()[g].defaultChannel.sendEmbed({
-                      author: {name: `Announcement from ${message.author.username}#${message.author.discriminator}`, icon_url: `${message.author.avatarURL.replace('.jpg', '.png')}`},
-                      description: `${args}`,
+                      author: {name: `${message.author.username}#${message.author.discriminator}`, icon_url: `${message.author.avatarURL}`},
+                      title: `:globe_with_meridians: Global Annoucement`,
+                      description: `**Annoucement**\n\n${args}`,
                       color: 0x176790,
-                      url: `https://teammoonlight.github.io/hammer`
+                      url: `https://google.com`
                     })
                 }
             })
