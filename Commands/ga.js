@@ -19,11 +19,11 @@ module.exports = class Ga {
             }).then(collected => {
                 for (var g in this.client.guilds.array()) {
                     this.client.guilds.array()[g].defaultChannel.sendEmbed({
-                      author: {name: `${message.author.username}#${message.author.discriminator}`, icon_url: `${message.author.avatarURL}`},
-                      title: `:globe_with_meridians: Global Annoucement`,
-                      description: `**Annoucement**\n\n${args}`,
+                      author: {name: `Annoucement from ${message.author.username}#${message.author.discriminator}`, icon_url: `${message.author.avatarURL.replace('.jpg', '.png')}`},
+                      description: `${args}`,
                       color: 0x176790,
-                      url: `https://google.com`
+                      url: `https://google.com`,
+                      footer: {text: `Global Annoucement | Sent at ${new Date().toUTCString()}`, icon_url: `${this.client.user.avatarURL.replace('.jpg', '.png')}`}
                     })
                 }
             })
