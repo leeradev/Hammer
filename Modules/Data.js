@@ -7,7 +7,7 @@ module.exports = class Data {
 
   async load() {
     return new Promise((resolve, reject) => {
-      resolve(JSON.parse(fs.readFileSync(__dirname + '/../Databases/database.json')));
+      resolve(JSON.parse(fs.readFileSync(__dirname + '/../Database.json')));
     })
   }
 
