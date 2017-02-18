@@ -30,10 +30,10 @@ const client = new class Client extends Discord.Client {
       this.events.guildDelete(guild);
     })
     this.on('error', error => {
-      this.events.error(error);
+      console.error(error);
     })
     this.on('warn', error => {
-      this.events.error(error);
+      console.warn(error)
     })
 
     // Login
