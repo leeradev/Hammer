@@ -73,8 +73,11 @@ module.exports = class Info {
                   } else {
                     if(args.includes('server')) return serverE()
                   }
+                  if(args.split(" ")[0] == 'user' && args.split(" ")[1] == 'myself') {
+                    myselfE()
+                  }
 
-                    if(args.includes('user')) {
+                    if(args.split(" ")[0] == 'user' && args.split(" ")[1] !== 'myself') {
                       if(!message.guild.member(message.mentions.users.first())) {
                         message.channel.sendMessage("You didn't include a `user`. Would you like information on `myself` or another user? If so, please mention someone now.")
                         message.channel.awaitMessages(m => m.author.id == message.author.id, {
@@ -96,6 +99,7 @@ module.exports = class Info {
                         memberE(member);
                       }
                     }
+
 
                 }
               } //messages.first().mentions.users.first().username
