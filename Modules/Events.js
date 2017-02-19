@@ -34,7 +34,16 @@ module.exports = class Events {
     }
 
     guildCreate(guild) {
-        this.client.webhook.sendMessage(`:inbox_tray: __**Shard ${this.client.shard.id}**__\nJoined **${guild.name}**.\nThere are **${guild.memberCount}** members.`)
+      try {
+        let role = guild.createRole({ name: 'HammerMuted' })
+        guilds.channels.forEach(ch => {
+          chan.overwritePermissions(role, {
+            'SEND_MESSAGES': false,
+            'SEND_TTS_MESSAGES': false
+          });
+        })
+      } catch(e) {}
+      this.client.webhook.sendMessage(`:inbox_tray: __**Shard ${this.client.shard.id}**__\nJoined **${guild.name}**.\nThere are **${guild.memberCount}** members.`)
     }
 
     guildDelete(guild) {
