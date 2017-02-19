@@ -17,7 +17,7 @@ module.exports = class Prune {
       message.channel.fetchMessages({ limit: 100 }).then(messages => {
         let found = {};
         messages.forEach(message => {
-          if(message.author.id == message.mentions.users.first().id)
+          if(message == message.mentions.users.first().id)
           found[message.id] = { id: message.id };
         })
         message.channel.bulkDelete(found).then(() => {
