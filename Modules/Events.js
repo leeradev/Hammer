@@ -45,9 +45,8 @@ module.exports = class Events {
       let data = await this.client.data.load();
       if(data.settings.modlogs[member.guild.id].memberlogs === false) return;
       this.client.channels.get(data.settings.modlogs[member.guild.id].memberlogs).sendEmbed({
-        author: {name: `${member.user.username}#${member.user.discriminator}`, icon_url: `${member.user.avatarURL}`},
-        description: `User has joined.`,
-        footer: {text: `Server Member Count: ${member.guild.memberCount}`},
+        author: {name: `${member.user.username}#${member.user.discriminator} (${member.user.id})`, icon_url: `${member.user.displayAvatarURL}`},
+        footer: {text: `User Joined`, icon_url: this.client.user.avatarURL.replace('.jpg', '.png')},
         timestamp: new Date(),
         color: 0x32CD32
       })
@@ -56,10 +55,11 @@ module.exports = class Events {
     async guildMemberRemove(member) {
       let data = await this.client.data.load();
       if(data.settings.modlogs[member.guild.id].memberlogs === false) return;
+      console.log(`${member.user.username}#${member.user.discriminator} (${member.user.id})`)
+      console.log(`${member.user.avatarURL == '' ? member.user.defaultAvatarURL : member.user.avatarURL}`)
       this.client.channels.get(data.settings.modlogs[member.guild.id].memberlogs).sendEmbed({
-        author: {name: `${member.user.username}#${member.user.discriminator}`, icon_url: `${member.user.avatarURL}`},
-        description: `User has left.`,
-        footer: {text: `Server Member Count: ${member.guild.memberCount}`},
+        author: {name: `${member.user.username}#${member.user.discriminator} (${member.user.id})`, icon_url: `${member.user.displayAvatarURL}`},
+        footer: {text: `User Left`, icon_url: this.client.user.avatarURL.replace('.jpg', '.png')},
         timestamp: new Date(),
         color: 0x8b0000
       })
