@@ -15,10 +15,10 @@ module.exports = class Prune {
       })
     } else if(message.mentions.users.first()) {
       message.channel.fetchMessages({ limit: 100 }).then(messages => {
-        let found = {};
+        let found = [];
         messages.forEach(m => {
           if(m == message.mentions.users.first().id)
-          found[m] = { id: m };
+          found.push(m);
         })
         message.channel.bulkDelete(found).then(() => {
           message.channel.sendMessage(`:ok_hand: Pruned **${found.size}** messages from this channel.`);
