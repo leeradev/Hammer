@@ -2,7 +2,7 @@ module.exports = class Shard {
   constructor(client) {
     this.client = client;
     this.name = "shard";
-    this.info = "Views shards.";
+    this.info = "Views shards. (* = Server shard is on.)";
     this.args = "";
   }
 

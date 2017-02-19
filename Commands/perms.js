@@ -2,7 +2,7 @@ module.exports = class Perms {
     constructor(client) {
         this.client = client;
         this.name = "perms";
-        this.info = "Returns information about different permissions required to use Hammer.";
+        this.info = "Shows different permissions required to use Hammer.";
         this.args = "<user / bot>";
     }
 
@@ -11,7 +11,7 @@ module.exports = class Perms {
         if (args === "user") {
             message.channel.sendEmbed({
                 title: `Permissions List`,
-                description: `These are the different permissions that you need to use moderation commands.\n\n**MANAGE_SERVER**\n<:vpOnline:212789758110334977>\`set\`\n<:vpOnline:212789758110334977>\`conf\`\n\n**KICK_MEMBERS**\n<:vpAway:212789859071426561>\`warn\`\n<:vpAway:212789859071426561>\`kick\`\n\n**BAN_MEMBERS**\n<:vpDnD:236744731088912384>\`ban\`\n<:vpDnD:236744731088912384>\`mute\`\n\n**ADMINISTRATOR**\n<:vpStreaming:212789640799846400>\`conf reset\``,
+                description: `These are the different permissions that you need to use moderation commands.\n\n**MANAGE_SERVER**\n<:vpOnline:212789758110334977>\`set\`\n<:vpOnline:212789758110334977>\`conf\`\n\n**KICK_MEMBERS**\n<:vpAway:212789859071426561>\`warn\`\n<:vpAway:212789859071426561>\`kick\`\n\n**BAN_MEMBERS**\n<:vpDnD:236744731088912384>\`ban\`\n<:vpDnD:236744731088912384>\`mute\`\n\n**ADMINISTRATOR**\n<:vpStreaming:212789640799846400>\`conf reset\`\n\n**HAMMER OWNERS**\n<:vpOffline:212790005943369728> \`eval\`\n<:vpOffline:212790005943369728> \`update\`\n<:vpOffline:212790005943369728> \`ga\``,
                 color: 0x176790,
                 url: `https://google.com`
             })
