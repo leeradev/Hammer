@@ -14,14 +14,15 @@ module.exports = class Prune {
         }).catch(e => message.channel.sendMessage(`:x: Failed to prune **${messages.size}** messages from <#${message.mentions.channels.first().id}>.\n${e}`))
       })
     } else if(message.mentions.users.first()) {
-      message.mentions.channels.first().fetchMessages({ limit: 100 }).then(messages => {
+      message.channel.fetchMessages({ limit: 100 }).then(messages => {
         let found = {};
         messages.forEach(message => {
+          if(message.author.id == message.mentions.users.first().id)
           found[message.id] = { id: message.id };
         })
-        message.mentions.channels.first().bulkDelete(found).then(() => {
-          message.channel.sendMessage(`:ok_hand: Pruned **${found.size}** messages from <#${message.mentions.channels.first().id}>.`);
-        }).catch(e => message.channel.sendMessage(`:x: Failed to prune **${found.size}** messages from <#${message.mentions.channels.first().id}>.\n${e}`))
+        message.channel.bulkDelete(found).then(() => {
+          message.channel.sendMessage(`:ok_hand: Pruned **${found.size}** messages from this channel.`);
+        }).catch(e => message.channel.sendMessage(`:x: Failed to prune **${found.size}** messages from this channel.\n${e}`))
       })
     } else {
       message.channel.fetchMessages({ limit: parseInt(args) }).then(messages => {
