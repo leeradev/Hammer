@@ -19,10 +19,11 @@ module.exports = class Prune {
         messages.forEach(m => {
           if(m == message.mentions.users.first().id)
           found.push(m);
+          message.channel.sendMessage(m);
         })
         message.channel.bulkDelete(found).then(() => {
-          message.channel.sendMessage(`:ok_hand: Pruned **${found.size}** messages from this channel.`);
-        }).catch(e => message.channel.sendMessage(`:x: Failed to prune **${found.size}** messages from this channel.\n${e}`))
+          message.channel.sendMessage(`:ok_hand: Pruned **${found.length}** messages from this channel.`);
+        }).catch(e => message.channel.sendMessage(`:x: Failed to prune **${found.length}** messages from this channel.\n${e}`))
       })
     } else {
       message.channel.fetchMessages({ limit: parseInt(args) }).then(messages => {
