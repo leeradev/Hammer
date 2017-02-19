@@ -8,8 +8,24 @@ module.exports = class Events {
         this.client = client;
     }
 
+    async setGameManager() {
+      let client = this.client;
+      async function getGuilds() {
+        let guilds = await client.shard.broadcastEval('this.guilds.size');
+        guilds = guilds.reduce((a, b) => a + b);
+        return guilds;
+      }
+      let games = [`hhelp | {guilds} Servers`, `hhelp | Shard ${this.client.shard.id}/${this.client.shard.count}`];
+      setInterval(async () => {
+        let g = await getGuilds();
+        this.client.user.setGame(games[Math.floor(Math.random() * games.length)].replace('{guilds}', g));
+      }, 12000)
+    }
+
     ready() {
         console.log('Ready!');
+        this.client.user.setGame(`Starting Up`);
+        this.setGameManager();
         const commands = fs.readdirSync(`./Commands/`);
         for (const command in commands) {
             const mod = new(require(`../Commands/${commands[command]}`))(this.client);
@@ -52,6 +68,7 @@ module.exports = class Events {
 
     async guildMemberAdd(member) {
       let data = await this.client.data.load();
+      if(!data.settings.modlogs[member.guild.id]) return;
       if(data.settings.modlogs[member.guild.id].memberlogs === false) return;
       this.client.channels.get(data.settings.modlogs[member.guild.id].memberlogs).sendEmbed({
         author: {name: `${member.user.username}#${member.user.discriminator} (${member.user.id})`, icon_url: `${member.user.displayAvatarURL}`},
@@ -63,6 +80,7 @@ module.exports = class Events {
 
     async guildMemberRemove(member) {
       let data = await this.client.data.load();
+      if(!data.settings.modlogs[member.guild.id]) return;
       if(data.settings.modlogs[member.guild.id].memberlogs === false) return;
       console.log(`${member.user.username}#${member.user.discriminator} (${member.user.id})`)
       console.log(`${member.user.avatarURL == '' ? member.user.defaultAvatarURL : member.user.avatarURL}`)
