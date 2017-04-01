@@ -1,0 +1,5 @@
+config.json
+\.DS_Store
+hammer.sqlite
+/Commands/shard.js
+Database.json
