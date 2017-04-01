@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/TeamMoonlight/Hammer/issues"
   },
-  "homepage": "https://github.com/TeamMoonlight/Hammer#readme"
+  "homepage": "https://github.com/TeamMoonlight/Hammer#readme",
+  "dependencies": {
+    "discord.js": "^11.0.0",
+    "uws": "^0.14.1"
+  }
 }
