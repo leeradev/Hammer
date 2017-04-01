@@ -1,0 +1,19 @@
+{
+  "name": "hammer",
+  "version": "4.0.0",
+  "description": "A 24/7 moderation bot for your server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamMoonlight/Hammer.git"
+  },
+  "author": "Jacob Bond, Jack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeamMoonlight/Hammer/issues"
+  },
+  "homepage": "https://github.com/TeamMoonlight/Hammer#readme"
+}
