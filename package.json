@@ -18,6 +18,7 @@
   "homepage": "https://github.com/TeamMoonlight/Hammer#readme",
   "dependencies": {
     "discord.js": "^11.0.0",
+    "rethinkdbdash": "^2.3.28",
     "uws": "^0.14.1"
   }
 }
