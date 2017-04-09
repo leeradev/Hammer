@@ -1,6 +1,6 @@
-/*    Discord    */
+/*    Sharder    */
 const { ShardingManager } = require('discord.js');
-const Manager = new ShardingManager('./src/Client.js');
+const Manager = new ShardingManager('./src/Hammer.js');
 
 /*    Spawn    */
-Manager.spawn(2);
+Manager.spawn(1);

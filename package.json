@@ -1,8 +1,15 @@
 {
-  "name": "hammer",
-  "version": "4.0.0",
-  "description": "A 24/7 moderation bot for your server.",
+  "name": "hammer-discord",
+  "version": "5.0.0",
+  "description": "A 24/7 moderation bot.",
   "main": "index.js",
+  "dependencies": {
+    "discord.js": "^11.0.0",
+    "discord.js-commando": "^0.9.0",
+    "rethinkdbdash": "^2.3.28",
+    "uws": "^0.14.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,15 +17,16 @@
     "type": "git",
     "url": "git+https://github.com/TeamMoonlight/Hammer.git"
   },
+  "keywords": [
+    "discord",
+    "bot",
+    "hammer",
+    "jackmagic"
+  ],
   "author": "Jacob Bond, Jack",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TeamMoonlight/Hammer/issues"
   },
-  "homepage": "https://github.com/TeamMoonlight/Hammer#readme",
-  "dependencies": {
-    "discord.js": "^11.0.0",
-    "rethinkdbdash": "^2.3.28",
-    "uws": "^0.14.1"
-  }
+  "homepage": "https://github.com/TeamMoonlight/Hammer#readme"
 }
